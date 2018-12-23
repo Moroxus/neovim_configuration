@@ -71,6 +71,13 @@ if !(which 'nvim')
         puts stderr_str
         exit status.exitstatus
     end
+    
+    puts "Installing tmux"
+    stdout_str, stderr_str, status = Open3.capture3("sudo pacman -s --needed --noconfirm tmux")
+    if status.exitstatus != 0
+        puts stderr_str
+        exit status.exitstatus
+    end
 end
 
 download = open('https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
