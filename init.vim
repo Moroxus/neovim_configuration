@@ -8,15 +8,14 @@ Plug 'blahgeek/neovim-colorcoder', { 'do' : ':UpdateRemotePlugins' }
 
 call plug#end()
 
-set number
-set laststatus=2
-set noshowmode
-let g:lightline = {'colorscheme':'solarized'}
-
 syntax enable
 set termguicolors
 set background=dark
 colorscheme solarized8
+
+set number
+set laststatus=2
+set noshowmode
 
 set tabstop=4       " The width of a TAB is set to 4.
                     " Still it is a \t. It is just that
@@ -134,7 +133,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Add diagnostic info for https://github.com/itchyny/lightline.vim
 let g:lightline = {
-      \ 'colorscheme': 'solarized8',
+      \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
