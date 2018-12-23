@@ -17,6 +17,9 @@ end
 
 def copy_file(src, dst, force_copy)
 if (!File.file?(dst) || force_copy)
+    if File.file?(dst)
+        FileUtils.remove(dst)
+    end
     FileUtils.copy(src, dst)
 end
 
