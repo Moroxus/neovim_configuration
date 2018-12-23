@@ -78,6 +78,8 @@ if !(which 'nvim')
         puts stderr_str
         exit status.exitstatus
     end
+else
+    puts "Neovim was already installed"
 end
 
 download = open('https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
@@ -104,12 +106,13 @@ if !File.directory?(directory)
     FileUtils.mkdir_p(directory)
 end
 
-force_config_update = false
+force_update_config = false
 if (ARGV.size > 0 && ARGV[0] == "--force-update-config")
-    force_config_update = true;
+    puts "Force updating config files"
+    force_config_update = true
 end
 
-copy_file("#{Dir.getwd}/init.vim","#{directory}/init.vim", force_config_update)
-copy_file("#{Dir.getwd}/coc-settings.json", "#{directory}/coc-settings.json", force_config_update)
-copy_file("#{Dir.getwd}/.tmux.conf", "#{Dir.home}/.tmux.conf", force_config_update)
-copy_file("#{Dir.getwd}/.tmuxlineSnapshot", "#{Dir.home}/.tmuxlineSnapshot", force_config_update)
+copy_file("#{Dir.getwd}/init.vim","#{directory}/init.vim", force_update_config)
+copy_file("#{Dir.getwd}/coc-settings.json", "#{directory}/coc-settings.json", force_update_config)
+copy_file("#{Dir.getwd}/.tmux.conf", "#{Dir.home}/.tmux.conf", force_update_config)
+copy_file("#{Dir.getwd}/.tmuxlineSnapshot", "#{Dir.home}/.tmuxlineSnapshot", force_update_config)
