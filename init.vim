@@ -11,7 +11,7 @@ call plug#end()
 syntax enable
 set termguicolors
 set background=dark
-colorscheme solarized8
+silent! colorscheme solarized8
 
 set number
 set laststatus=2
