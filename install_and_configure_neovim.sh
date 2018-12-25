@@ -90,3 +90,10 @@ copy_file("#{Dir.getwd}/coc-settings.json", "#{directory}/coc-settings.json", fo
 copy_file("#{Dir.getwd}/.tmux.conf", "#{Dir.home}/.tmux.conf", force_update_config)
 
 stdout_str, stderr_str, status = Open3.capture3("nvim +'PlugInstall --sync' +qa")
+
+font_url = "https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf?raw=true"
+
+#download patched font and set it as terminal font
+download_file(font_url, "#{Dir.home}/.local/share/fonts/Hack Regular Nerd Font Complete.ttf")
+execute_command "fc-cache -fv"
+execute_command "gsettings set org.gnome.desktop.interface monospace-font-name 'Hack Nerd Font 11'"
