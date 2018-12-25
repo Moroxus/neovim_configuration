@@ -5,6 +5,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
 Plug 'blahgeek/neovim-colorcoder', { 'do' : ':UpdateRemotePlugins' }
 Plug 'taohexxx/lightline-buffer'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
