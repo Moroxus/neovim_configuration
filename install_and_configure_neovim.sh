@@ -25,6 +25,19 @@ end
 
 end
 
+def download_file(url, destination, override = false)
+    if (!File.exists?(destination) || override)
+        download = open(url)
+	    directory = File.dirname(destination)
+        unless File.directory?(directory)
+		    puts "Creating directory #{directory}"
+		    FileUtils.mkdir_p(directory)
+	    end
+        puts "Downloading #{destination}"
+        IO.copy_stream(download, destination)
+    end
+end
+
 if !(which 'nvim')
 	puts "Installing python-neovim"
     stdout_str, stderr_str, status = Open3.capture3("sudo pacman -S --needed --noconfirm python-neovim")
@@ -85,19 +98,10 @@ else
     puts "Neovim was already installed"
 end
 
-download = open('https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
+download = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 path = "#{Dir.home}/.local/share/nvim/site/autoload/plug.vim"
 
-if !File.exists?(path)
-	directory = File.dirname(path)
-	unless File.directory?(directory)
-		puts "Creating directory #{directory}"
-		FileUtils.mkdir_p(directory)
-	end
-
-	puts "Downloading vim plug"
-	IO.copy_stream(download, path)
-end
+download_file(download, path)
 
 if !(which 'ccls')
     puts "Installing ccls"
