@@ -6,6 +6,7 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
 Plug 'blahgeek/neovim-colorcoder', { 'do' : ':UpdateRemotePlugins' }
 Plug 'taohexxx/lightline-buffer'
 Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree'
 
 call plug#end()
 
