@@ -38,64 +38,30 @@ def download_file(url, destination, override = false)
     end
 end
 
+def execute_command(command)
+    stdout_str, stderr_str, status = Open3.capture3(command)
+    if status.exitstatus != 0
+        STDERR.puts stderr_str
+        exit status.exitstatus
+    end
+end
+
+def pacman_install(target)
+    STDERR.puts "Installing #{target}"
+    execute_command("sudo pacman -S --needed --noconfirm #{target}")
+end
+
 if !(which 'nvim')
-	puts "Installing python-neovim"
-    stdout_str, stderr_str, status = Open3.capture3("sudo pacman -S --needed --noconfirm python-neovim")
-    if status.exitstatus != 0
-        puts stderr_str
-        exit status.exitstatus
-    end
-
-    puts "Installing python2-neovim"
-	stdout_str, stderr_str, status = Open3.capture3("sudo pacman -S --needed --noconfirm python2-neovim")
-	if status.exitstatus != 0
-        puts stderr_str
-        exit status.exitstatus
-    end
-
-    puts "Installing xclip"
-    stdout_str, stderr_str, status = Open3.capture3("sudo pacman -S --needed --noconfirm xclip")
-    if status.exitstatus != 0
-        puts stderr_str
-        exit status.exitstatus
-    end
-
-    puts "Installing xsel"
-	stdout_str, stderr_str, status = Open3.capture3("sudo pacman -S --needed --noconfirm xsel")
-    if status.exitstatus != 0
-        puts stderr_str
-        exit status.exitstatus
-    end
-
-    puts "Installing neovim"
-    stdout_str, stderr_str, status = Open3.capture3("sudo pacman -s --needed --noconfirm neovim")
-    if status.exitstatus != 0
-        puts stderr_str
-        exit status.exitstatus
-    end
-
-    puts "Installing clang"
-    stdout_str, stderr_str, status = Open3.capture3("sudo pacman -s --needed --noconfirm clang")
-    if status.exitstatus != 0
-        puts stderr_str
-        exit status.exitstatus
-    end
-
-    puts "Installing llvm"
-    stdout_str, stderr_str, status = Open3.capture3("sudo pacman -s --needed --noconfirm llvm")
-    if status.exitstatus != 0
-        puts stderr_str
-        exit status.exitstatus
-    end
-    
-    puts "Installing tmux"
-    stdout_str, stderr_str, status = Open3.capture3("sudo pacman -s --needed --noconfirm tmux")
-    if status.exitstatus != 0
-        puts stderr_str
-        exit status.exitstatus
-    end
+    pacman_install 'python-neovim'
+    pacman_install 'python2-neovim'
+    pacman_install 'xclip'
+    pacman_install 'xsel'
+    pacman_install 'neovim'
+    pacman_install 'clang'
+    pacman_install 'llvm'
+    pacman_install 'tmux'
 else
-    puts "Neovim was already installed"
+    STDERR.puts "Neovim was already installed"
 end
 
 download = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
