@@ -118,6 +118,5 @@ end
 copy_file("#{Dir.getwd}/init.vim","#{directory}/init.vim", force_update_config)
 copy_file("#{Dir.getwd}/coc-settings.json", "#{directory}/coc-settings.json", force_update_config)
 copy_file("#{Dir.getwd}/.tmux.conf", "#{Dir.home}/.tmux.conf", force_update_config)
-copy_file("#{Dir.getwd}/.tmuxlineSnapshot", "#{Dir.home}/.tmuxlineSnapshot", force_update_config)
 
 stdout_str, stderr_str, status = Open3.capture3("nvim +'PlugInstall --sync' +qa")

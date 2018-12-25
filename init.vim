@@ -2,7 +2,6 @@ call plug#begin("~/.local/share/nvim/plugged")
 
 Plug 'lifepillar/vim-solarized8'
 Plug 'itchyny/lightline.vim'
-Plug 'edkolev/tmuxline.vim'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
 Plug 'blahgeek/neovim-colorcoder', { 'do' : ':UpdateRemotePlugins' }
 
