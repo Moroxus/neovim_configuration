@@ -69,6 +69,7 @@ path = "#{Dir.home}/.local/share/nvim/site/autoload/plug.vim"
 
 download_file(download, path)
 
+#TODO need to refactor installing ccls manually. Git clone, then build by cmake... Pamac not working inside script...
 if !(which 'ccls')
     puts "Installing ccls"
     stdout_str, stderr_str, status = Open3.capture3("pamac build ccls-git")
