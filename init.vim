@@ -43,6 +43,8 @@ vnoremap <C-x> "+di
 
 inoremap <Esc> ~<BS><Esc>
 
+map <silent> <C-n> :NERDTreeToggle<CR>
+
 let g:colorcoder_enable_filetypes = ['c', 'cpp', 'python']
 
 " if hidden not set, TextEdit might fail.
