@@ -52,6 +52,8 @@ def pacman_install(target)
 end
 
 if !(which 'nvim')
+    pacman_install 'nodejs'
+    pacman_install 'yarn'
     pacman_install 'python-neovim'
     pacman_install 'python2-neovim'
     pacman_install 'xclip'
