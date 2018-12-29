@@ -96,4 +96,4 @@ font_url = "https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Ha
 #download patched font and set it as terminal font
 download_file(font_url, "#{Dir.home}/.local/share/fonts/Hack Regular Nerd Font Complete.ttf")
 execute_command "fc-cache -fv"
-execute_command "gsettings set org.gnome.desktop.interface monospace-font-name 'Hack Nerd Font 11'"
+execute_command "gsettings set org.gnome.desktop.interface monospace-font-name 'Hack Nerd Font Mono 11'"
